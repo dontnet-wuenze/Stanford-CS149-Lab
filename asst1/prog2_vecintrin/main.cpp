@@ -249,7 +249,42 @@ void clampedExpVector(float* values, int* exponents, float* output, int N) {
   // Your solution should work for any value of
   // N and VECTOR_WIDTH, not just when VECTOR_WIDTH divides N
   //
-  
+  __cs149_vec_float x;
+  __cs149_vec_int y;
+  __cs149_vec_int zero = _cs149_vset_int(0);
+  __cs149_vec_int ones = _cs149_vset_int(1.f);
+  __cs149_vec_float clamped = _cs149_vset_float(9.999999f); 
+ 
+  __cs149_mask maskAll, maskNotZero, maskOver;  
+
+  for(int i = 0; i < N; i += VECTOR_WIDTH) {
+    // All ones
+    if(N - i < VECTOR_WIDTH)
+      maskAll = _cs149_init_ones(N-i);
+    else 
+      maskAll = _cs149_init_ones();
+    
+    __cs149_vec_float result = _cs149_vset_float(1.f);
+    // Load vector of values from contiguous memory addresses
+    _cs149_vload_float(x, values + i, maskAll); // x = values[i]
+    _cs149_vload_int(y, exponents + i, maskAll); // y = exponents[i]
+    while(true) {
+      // find all y > 0
+      _cs149_vgt_int(maskNotZero, y, zero, maskAll);
+      int notZeroNum = _cs149_cntbits(maskNotZero);
+      // if all y == 0, break
+      if(notZeroNum == 0)
+        break;
+      // y -- (y > 0)
+      _cs149_vsub_int(y, y, ones, maskNotZero);  
+      // result = result * x;
+      _cs149_vmult_float(result, result, x, maskNotZero);
+    }
+    // if result > 9.999999, clamp
+    _cs149_vgt_float(maskOver, result, clamped, maskAll); 
+    _cs149_vset_float(result, 9.999999f, maskOver);
+    _cs149_vstore_float(output + i, result, maskAll);
+  }
 }
 
 // returns the sum of all elements in values
@@ -271,10 +306,24 @@ float arraySumVector(float* values, int N) {
   // CS149 STUDENTS TODO: Implement your vectorized version of arraySumSerial here
   //
   
+  __cs149_mask maskAll;
+  __cs149_vec_float x;
+  maskAll = _cs149_init_ones();
+  __cs149_vec_float sum = _cs149_vset_float(0.f);
+  
   for (int i=0; i<N; i+=VECTOR_WIDTH) {
-
+    _cs149_vload_float(x, values + i, maskAll);
+    _cs149_vadd_float(sum, sum, x, maskAll);
+  }
+  int k = VECTOR_WIDTH;
+  while(k > 1) {
+    _cs149_hadd_float(sum, sum);
+    _cs149_interleave_float(sum,sum);
+    k /= 2;
   }
 
-  return 0.0;
+  float output[VECTOR_WIDTH];
+  _cs149_vstore_float(output, sum, maskAll);
+  return output[0];
 }
 
