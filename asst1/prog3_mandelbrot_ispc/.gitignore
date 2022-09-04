@@ -1,0 +1,3 @@
+objs/
+.cache/
+mandelbrot_ispc
