@@ -252,7 +252,7 @@ TaskGroupBase::AllocMemory(int64_t size, int32_t alignment) {
 #ifndef ISPC_IS_WINDOWS
 static inline void
 lMemFence() {
-    __asm__ __volatile__("mfence":::"memory");
+    __asm__ __volatile__("dsb sy":::"memory");
 }
 #endif // !ISPC_IS_WINDOWS
 
@@ -279,8 +279,8 @@ lAtomicCompareAndSwapPointer(void **v, void *newValue, void *oldValue) {
                           : "memory");
 #else
     __asm__ __volatile__("lock\ncmpxchgq %2,%1"
-                          : "=a"(result), "=m"(*v)
-                          : "q"(newValue), "0"(oldValue)
+                          : "=r"(result), "=m"(*v)
+                          : "Q"(newValue), "0"(oldValue)
                           : "memory");
 #endif // ISPC_POINTER_BYTES
     lMemFence();
@@ -295,8 +295,8 @@ static int32_t
 lAtomicCompareAndSwap32(volatile int32_t *v, int32_t newValue, int32_t oldValue) {
     int32_t result;
     __asm__ __volatile__("lock\ncmpxchgl %2,%1"
-                          : "=a"(result), "=m"(*v)
-                          : "q"(newValue), "0"(oldValue)
+                          : "=r"(result), "=m"(*v)
+                          : "Q"(newValue), "0"(oldValue)
                           : "memory");
     lMemFence();
     return result;
