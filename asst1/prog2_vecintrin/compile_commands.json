@@ -1,0 +1,17 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-I../common",
+      "logger.o",
+      "CS149intrin.o",
+      "-o",
+      "myexp",
+      "main.cpp"
+    ],
+    "directory": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog2_vecintrin",
+    "file": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog2_vecintrin/main.cpp",
+    "output": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog2_vecintrin/myexp"
+  }
+]

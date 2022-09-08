@@ -1,0 +1,78 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-m64",
+      "-I../common",
+      "-Iobjs/",
+      "-O3",
+      "-std=c++11",
+      "-Wall",
+      "-fPIC",
+      "-c",
+      "-o",
+      "objs/main.o",
+      "main.cpp"
+    ],
+    "directory": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads",
+    "file": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads/main.cpp",
+    "output": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads/objs/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-m64",
+      "-I../common",
+      "-Iobjs/",
+      "-O3",
+      "-std=c++11",
+      "-Wall",
+      "-fPIC",
+      "-c",
+      "-o",
+      "objs/mandelbrotSerial.o",
+      "mandelbrotSerial.cpp"
+    ],
+    "directory": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads",
+    "file": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads/mandelbrotSerial.cpp",
+    "output": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads/objs/mandelbrotSerial.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-m64",
+      "-I../common",
+      "-Iobjs/",
+      "-O3",
+      "-std=c++11",
+      "-Wall",
+      "-fPIC",
+      "-c",
+      "-o",
+      "objs/mandelbrotThread.o",
+      "mandelbrotThread.cpp"
+    ],
+    "directory": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads",
+    "file": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads/mandelbrotThread.cpp",
+    "output": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads/objs/mandelbrotThread.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-m64",
+      "-I../common",
+      "-Iobjs/",
+      "-O3",
+      "-std=c++11",
+      "-Wall",
+      "-fPIC",
+      "-c",
+      "-o",
+      "objs/ppm.o",
+      "../common/ppm.cpp"
+    ],
+    "directory": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads",
+    "file": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/common/ppm.cpp",
+    "output": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog1_mandelbrot_threads/objs/ppm.o"
+  }
+]

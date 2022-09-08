@@ -1,0 +1,19 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-m64",
+      "-I../common",
+      "-Iobjs/",
+      "-O2",
+      "-Wall",
+      "-c",
+      "-o",
+      "objs/tasksys.o",
+      "../common/tasksys.cpp"
+    ],
+    "directory": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog5_saxpy",
+    "file": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/common/tasksys.cpp",
+    "output": "/Users/wuenze/course/Stanford-CS149-Lab/asst1/prog5_saxpy/objs/tasksys.o"
+  }
+]

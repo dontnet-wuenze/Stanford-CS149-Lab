@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/wuenze/course/Stanford-CS149-Lab/asst1'
+make: Leaving directory `/Users/wuenze/course/Stanford-CS149-Lab/asst1'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
